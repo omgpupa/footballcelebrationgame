@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Celebration Pose Matcher</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Football Celebration Matcher</h1>
+            <p>Mimic the iconic pose from FourFourTwo to score big!</p>
+            <div class="scoreboard-container">
+                <div class="scoreboard">
+                    <h2 id="total-score" class="glow-text-small">Score: 0</h2>
+                </div>
+                <div class="timer-box">
+                    <h2>Time: <span id="time-left">10s</span></h2>
+                </div>
+            </div>
+        </header>
+        
+        <div class="game-area">
+            <div class="panel target-panel">
+                <h2 id="pose-name">Loading...</h2>
+                <h3 id="pose-odds" class="odds-display">Odds: 1.0x</h3>
+                <div class="image-wrapper">
+                    <img id="target-image" src="" alt="Target Celebration">
+                </div>
+            </div>
+
+            <div class="panel webcam-panel">
+                <h2>Your Pose</h2>
+                <div class="video-wrapper">
+                    <video id="input-video" style="display: none;" autoplay playsinline></video>
+                    <canvas id="output-canvas"></canvas>
+                    <div id="loading-spinner" class="spinner">Starting Camera...</div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar-bg">
+                        <div id="progress-bar-fill" class="progress-bar-fill"></div>
+                    </div>
+                    <p id="match-status">Match: 0%</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="celebration-overlay" class="overlay hidden">
+            <h1 class="glow-text">GOAL!!!</h1>
+            <button id="next-btn" style="display: none;">Next Celebration</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
